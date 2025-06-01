@@ -13,5 +13,8 @@ RUN pip install --no-cache-dir -r requirements.txt
 # アプリ本体をコピー
 COPY . .
 
-# 起動コマンド（App Runnerはポート8000前提）
-CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]
+# ポートを明示的に公開（これが重要！）
+EXPOSE 8080
+
+# 起動コマンド
+CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8080"]
